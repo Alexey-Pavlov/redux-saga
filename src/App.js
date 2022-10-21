@@ -1,25 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+// import {useSelector} from "react-redux";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import {useDispatch, useSelector} from 'react-redux'
+import News from "./components/news";
+import {getNews} from "./redux/slices/newsSlice";
+
+const App = () => {
+    const {latestNews, popularNews, latestNewsError, popularNewsError} = useSelector(store => store?.news);
+    const dispatch = useDispatch()
+
+    const handleNews = () => {
+        dispatch(getNews());
+    };
+
+    return (
+        <div>
+            <button onClick={handleNews}>Get News</button>
+            <News news={latestNews} error={latestNewsError} title="Latest News"/>
+            <News news={popularNews} error={popularNewsError} title="Popular News"/>
+        </div>
+    )
 }
 
 export default App;
