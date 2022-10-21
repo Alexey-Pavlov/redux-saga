@@ -1,4 +1,4 @@
-import {call, fork, put, takeEvery} from '@redux-saga/core/effects'
+import {call, fork, put, takeEvery, all} from '@redux-saga/core/effects'
 import {getLatestNews, getPopularNews} from '../../api/index'
 import {setLatestNews, setLatestNewsError, setPopularNews, setPopularNewsError} from '../slices/newsSlice'
 
@@ -22,16 +22,18 @@ export function* handlePopularNews() {
 
 }
 
-export function* handleNews() {
-    yield fork(handleLatestNews)
-    yield fork(handlePopularNews)
+export function* watchPopularSaga() {
+    yield takeEvery('news/getPopularNews', handlePopularNews)
 }
 
-export function* watchClickSaga() {
-    yield takeEvery('news/getNews', handleNews)
+export function* watchLatestSaga() {
+    yield takeEvery('news/getLatestNews', handleLatestNews)
 }
 
 export default function* rootSaga() {
     console.log('hello world!');
-    yield watchClickSaga();
+    yield all([
+        fork(watchPopularSaga),
+        fork(watchLatestSaga)
+    ])
 }
