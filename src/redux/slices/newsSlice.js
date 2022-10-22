@@ -2,7 +2,7 @@ import {createSlice} from "@reduxjs/toolkit";
 
 export const newsSlice = createSlice({
     name: 'news', initialState: {
-        latestNews: [], popularNews: [], latestNewsError: '', popularNewsError: '',
+        latestNews: [], popularNews: [], latestNewsError: '', popularNewsError: '', loadingData: false
     }, reducers: {
         getLatestNews: (state) => state, getPopularNews: (state) => state, setLatestNews: (state, {payload}) => {
             state.latestNews = payload;
@@ -12,7 +12,9 @@ export const newsSlice = createSlice({
             state.latestNewsError = payload
         }, setPopularNewsError: (state, {payload}) => {
             state.popularNewsError = payload
-        }
+        }, setLoadingData: (state, {payload}) => {
+            state.loadingData = payload;
+        },
     }
 })
 
@@ -22,7 +24,8 @@ export const {
     setLatestNews,
     setPopularNews,
     setLatestNewsError,
-    setPopularNewsError
+    setPopularNewsError,
+    setLoadingData
 } = newsSlice.actions
 
 export default newsSlice.reducer

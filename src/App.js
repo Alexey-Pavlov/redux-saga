@@ -6,6 +6,7 @@ import PopularNews from "./pages/popular-news/popular-news";
 import Home from "./pages/home/home";
 
 const App = () => {
+
     return (
         <>
             <Header/>

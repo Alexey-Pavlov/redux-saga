@@ -4,18 +4,17 @@ import {useEffect} from "react";
 import {getLatestNews} from "../../redux/slices/newsSlice";
 
 const LatestNews = () => {
-    const {latestNews, latestNewsError} = useSelector(store => store?.news);
+    const {latestNews, latestNewsError, loadingData} = useSelector(store => store?.news);
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getLatestNews())
-    })
+    }, [])
 
-    return(
-        <div>
-            <News news={latestNews} error={latestNewsError} title="Latest News" />
-        </div>
-    );
+    return (<div>
+            {loadingData ? <h3>Loading...</h3> : <News news={latestNews} error={latestNewsError} title="Latest News"/>}
+
+        </div>);
 };
 
 export default LatestNews;
