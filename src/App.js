@@ -13,8 +13,8 @@ const App = () => {
             <main>
                 <Routes>
                     <Route path="/" element={<Home/>}/>
-                    <Route path="/latest-news" element={<LatestNews/>}/>
-                    <Route path="/popular-news" element={<PopularNews/>}/>
+                    <Route path="latest-news" element={<LatestNews/>}/>
+                    <Route path="popular-news" element={<PopularNews/>}/>
                 </Routes>
             </main>
             <Footer/>
