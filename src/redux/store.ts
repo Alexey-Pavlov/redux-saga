@@ -5,7 +5,7 @@ import rootSaga from "./sagas";
 
 const sagaMiddleware = createSagaMiddleware();
 
-export default configureStore({
+const store = configureStore({
     reducer: {
         news: newsReducer
     }, middleware: (getDefaultMiddleware) => {
@@ -13,4 +13,9 @@ export default configureStore({
     },
 })
 
+export type RootState = ReturnType<typeof store.getState>
+
 sagaMiddleware.run(rootSaga)
+
+export default store
+

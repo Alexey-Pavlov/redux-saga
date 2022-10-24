@@ -1,10 +1,10 @@
 import {call, fork, put, takeEvery, all} from '@redux-saga/core/effects'
-import {getLatestNews, getPopularNews} from '../../api/index'
+import {getLatestNews, getPopularNews} from '../../api'
 import {setLatestNews, setLatestNewsError, setPopularNews, setPopularNewsError, setLoadingData} from '../slices/newsSlice'
 
 export function* handleLatestNews() {
     try {
-        const {hits} = yield call(getLatestNews);
+        const {hits} = yield call(getLatestNews, 'react');
         yield put(setLatestNews(hits))
     } catch {
         yield put(setLatestNewsError('Error fetching latest news'))

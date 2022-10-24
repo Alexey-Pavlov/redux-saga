@@ -1,11 +1,11 @@
-import {useDispatch, useSelector} from "react-redux";
 import News from "../../components/news/news";
 import {useEffect} from "react";
 import {getLatestNews} from "../../redux/slices/newsSlice";
+import {useAppDispatch, useAppSelector} from "../../hooks";
 
 const LatestNews = () => {
-    const {latestNews, latestNewsError, loadingData} = useSelector(store => store?.news);
-    const dispatch = useDispatch();
+    const {latestNews, latestNewsError, loadingData} = useAppSelector(store => store?.news);
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(getLatestNews())

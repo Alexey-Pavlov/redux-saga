@@ -1,15 +1,14 @@
 import './news.css';
 
-const News = ({ news, error, title }) => {
+const News = ({news, error, title}) => {
     if (!news || news.length === 0) {
         return error ? <h2>{error}</h2> : null;
     }
 
-    return(
-        <div>
+    return (<div>
             <h2>{`${title}:`}</h2>
             <ul className="news-list">
-                {news.map(({ objectID, url, title, points, num_comments, created_at, author}) => (
+                {news.map(({objectID, url, title, points, num_comments, created_at, author}) => (
                     <li key={objectID} className="news">
                         <div className="description">
                             <a href={url} className="news-title">{title || 'No title'}</a>
@@ -18,11 +17,9 @@ const News = ({ news, error, title }) => {
                             <span className="date">{new Date(created_at).toLocaleDateString()}</span>
                             <span className="author">{author || 'no author'}</span>
                         </div>
-                    </li>
-                ))}
+                    </li>))}
             </ul>
-        </div>
-    );
+        </div>);
 };
 
 export default News;
