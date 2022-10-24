@@ -1,14 +1,24 @@
 import { createSlice } from '@reduxjs/toolkit'
 
+type newsState = {
+  latestNews: never[],
+  popularNews: never[],
+  latestNewsError: string,
+  popularNewsError: string,
+  loadingData: boolean
+}
+
+const initialState: newsState = {
+  latestNews: [],
+  popularNews: [],
+  latestNewsError: '',
+  popularNewsError: '',
+  loadingData: false,
+}
+
 export const newsSlice = createSlice({
   name: 'news',
-  initialState: {
-    latestNews: [],
-    popularNews: [],
-    latestNewsError: '',
-    popularNewsError: '',
-    loadingData: false,
-  },
+  initialState,
   reducers: {
     getLatestNews: (state) => state,
     getPopularNews: (state) => state,
