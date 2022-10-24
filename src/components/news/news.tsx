@@ -1,4 +1,4 @@
-import './news.css'
+import './news.scss'
 
 const News = ({ news, error, title }: { news: never[]; error: string; title: string }) => {
   if (!news || news.length === 0) {

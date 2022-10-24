@@ -5,7 +5,7 @@ import LatestNews from './pages/latest-news/latest-news'
 import PopularNews from './pages/popular-news/popular-news'
 import Home from './pages/home/home'
 
-const App = () => {
+export const App = () => {
   return (
     <>
       <Header />
@@ -20,5 +20,3 @@ const App = () => {
     </>
   )
 }
-
-export default App
