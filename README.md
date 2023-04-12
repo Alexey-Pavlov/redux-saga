@@ -1,6 +1,8 @@
 # Readux-Saga Project
 This is an educational project designed to help me practice using [redux-saga](https://redux-saga.js.org/), with a rendering of the latest and trending news on HackerNews. It covers all the basic concepts of redux-saga.
 
+## Demo
+Here's a live demo of the project: https://redux-saga-gamma.vercel.app/
 
 ## Technologies Used
 - React.js
